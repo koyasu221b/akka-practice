@@ -2,6 +2,8 @@ package playground
 
 import akka.actor.ActorSystem
 
+import scala.util.Try
+
 object Playground extends App {
 
   val actorSystem = ActorSystem("HelloAkka")
@@ -81,5 +83,23 @@ object Playground extends App {
   // List(1,2,3,4).flapMap(num => List('a', 'b', 'c', 'd').map(char => num + "-" + char))
 
   // Seq, Array, List, Vector, Map, Tuples
+  val anOption = Some(2)
+  val aTry = Try {
+    throw new RuntimeException
+  }
+
+  //pattern matching
+  val unkonw = 2
+  val order = unkonw match {
+    case 1 => "first"
+    case 2 => "second"
+    case _ => "unkonwn"
+  }
+
+  val bob = Person("Bob", 22)
+  val greeting = bob match {
+    case Person(n, _) => s"Hi, my name is $n"
+    case _ => "I dont' know my name"
+  }
 
 }
